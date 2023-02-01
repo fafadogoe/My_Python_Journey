@@ -1,0 +1,36 @@
+import random
+print("Welcome to the Number Guessing Game!")
+print("I'm thinking of a number between 1 and 100 ")
+def while_loop():
+  global count
+  global target
+  while count!=target:
+    print(f"You have {target-count} attempts remaining to guess the number.")
+    guess=int(input("Make a guess: "))
+    if guess==correct_number:
+      print("Your guess is right!")
+      break
+    elif guess>correct_number:
+      print("Too high!")
+      print("Guess again!")
+    elif guess<correct_number:
+      print("too low!")
+      print("Guess again!")
+    count+=1
+    
+difficulty=input("Choose a difficulty. Type 'easy' or 'hard': ")
+count=0
+lists=[]
+for i in range(2,100):
+  lists.append(i)
+correct_number=random.choice(lists)
+
+if difficulty=="easy":
+  target=10
+  while_loop()
+elif difficulty=="hard":
+  target=5
+  while_loop()
+else:
+  print("Wrong input!")
+print("Game Ended!")
